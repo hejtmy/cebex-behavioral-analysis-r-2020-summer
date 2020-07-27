@@ -99,7 +99,126 @@ for(i in 1:100){
 }
 
 ### Change is so it skips non numeric columns
+str(ggplot2::mpg)
 for(column in ggplot2::mpg){
+  if(is.numeric(column)){
+    print(mean(column))
+  }
+}
+
+for(column in ggplot2::mpg){
+  print(class(column))
+  if(!is.numeric(column)) next
+  if(is.na(column)) next
+  if(is.na(column)) next
   print(mean(column))
 }
 
+### break
+for(i in 1:10){
+  print(sample(1:10, 1))
+}
+
+?rnorm
+set.seed(666)
+
+n_obs <- 0
+for(i in 1:1000){
+  if(mean(rnorm(100, 100, 15)) > 103){
+    n_obs <- n_obs + 1
+    print("GOT IT")
+  }
+}
+
+n_obs <- 0
+for(i in 1:1000){
+  if(mean(rnorm(100, 100, 15)) > 103){
+    n_obs <- n_obs + 1
+    print("GOT IT")
+    break
+  }
+}
+
+### while
+i <- 0
+while(i <= 5){
+  print(i)
+  i <- i + 1
+}
+
+i <- 0
+while(TRUE){
+  print(i)
+  i <- i + 1
+  if(i > 5) break
+}
+
+### BETTER TO RUN FOR LOOP 1000000 TIMES THAN WHILE
+
+## Custom functions
+set.seed(666)
+x <- rnorm(100, 10, 1)
+mean(x)
+sd(x)
+median(x)
+
+x2 <- rnorm(100, 10, 1)
+mean(x2)
+sd(x2)
+median(x2)
+
+x3 <- rnorm(100, 10, 1)
+mean(x3)
+sd(x3)
+median(x3)
+
+mean_sd_median <- function(x){
+  mean <- mean(x)
+  sd <- sd(x)
+  median <- median(x)
+  return(c(mean, sd, median))
+}
+
+mean_sd_median(x)
+
+rnorm_decriptives <- function(){
+  x <- rnorm(100, 10, 1)
+  mean <- mean(x)
+  sd <- sd(x)
+  median <- median(x)
+  return(c(mean, sd, median))
+}
+
+rnorm_decriptives()
+
+rnorm_decriptives <- function(n = 100, mu = 0, sd = 1){
+  x <- rnorm(n, mu, sd)
+  results <- mean_sd_median(x)
+  return(results)
+}
+
+rnorm_decriptives(n = 1000, mu = 100, sd = 10)
+
+## apply, sapply, lapply
+
+mat <- matrix(rep(c(1,2,3,4), 4), ncol=4)
+mat
+
+apply(mat, 1, mean)
+apply(mat, 2, mean)
+
+person1 <- list(name="Lukas", age=30)
+person2 <- list(name="Martin", age=26)
+people <- list(person1, person2)
+
+lapply(people, nchar)
+sapply(people, nchar)
+
+
+for(column in iris){
+  print(mean(column))
+}
+sapply(iris, mean)
+
+sapply(iris, function(x){is.numeric(x)})
+sapply(iris, function(x){if(is.numeric(x)) mean(x)})
