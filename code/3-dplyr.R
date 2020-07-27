@@ -96,6 +96,66 @@ df_movies <- mutate(df_movies,
 
 ## in the big5 add:
 # Extraversion = sum of all Es
-# engnat = recode as per instruction 1 == yes, 2 == NO, 0 == NO (ifelse)
+# df_movies <- mutate(df_big5, Extraversion = E1 + E2 + E3 + E4 + E5 ....)
+# engnat = recode as per instruction 1 == yes, 2 == NO, 0 == NO
+mutate(df_big5, ifelse(engnat == 1), "yes", "no")
+recode(df_big5$engnat, `1`="yes", `2`="no", `0`=NA)
 # new variable is_old
+mutate(df_big5, is_old = age > 65)
 # filter out all people from the US (there shoudl be no US people in the final dataset)
+
+
+## arrange
+head(df_movies[order(df_movies$revenue, decreasing = TRUE), "title"])
+head(arrange(df_movies, -revenue, runtime))
+
+## summarise
+### Creating new summary table
+summarise(df_movies, mean_budget=mean(budget), 
+          mean_revenue=mean(revenue))
+
+## PIPING
+
+df_movies %>% head(2)
+
+x <- df_movies$budge
+x <- mean(x)
+x <- log(x)
+
+df_movies$budget %>% mean() %>% log()
+## imaginary variable .
+#' . <- df_movies$budge
+#' . <- mean(.)
+#' . <- log(.)
+df_movies$budget %>% mean(.) %>% log(.)
+
+df_movies %>%
+  filter(budget > 0) %>%
+  arrange(-revenue) %>%
+  select(title) %>%
+  head(10)
+
+df_movies %>%
+  filter(budget > 0, revenue > 0) %>%
+  mutate(profit = revenue - budget) %>%
+  summarise(mean(profit)/10^6)
+
+## group_by
+
+df_movies %>%
+  filter(budget > 0, revenue > 0) %>%
+  mutate(profit = revenue - budget) %>%
+  group_by(good_movie = vote_average > 7) %>%
+  summarise(profits = mean(profit)/10^6)
+
+df_movies %>%
+## Filter out budget and revenue > 0
+  filter(budget > 0, revenue > 0) %>%
+## minimum number of votes is quantile 20 and max is top 80 percent
+  filter(vote_count > quantile(vote_count, 0.1),
+         vote_count < quantile(vote_count, 0.9)) %>%
+## group the results by average vote being larger than average
+  group_by(above_average_movie = vote_average > mean(vote_average)) %>%
+## figure out the average budget and average revenue
+  summarise(average_budget = mean(budget)/10^6, 
+            average_revenue = mean(revenue)/10^6)
