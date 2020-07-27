@@ -25,3 +25,7 @@ This track builds up on the knowledge from Introduction to R course and focuses 
 |4  | Multiple predictors        | GLMs, Mixed effect models | 2 |
 |4  | Reporting results          | Knitr, papaja | 2 |
 |4  | Combining all together     | data loading, preprocessing, visualizing, analyzing with statistical tests and visualizing results | 1 |
+
+
+## Discord
+https://discord.gg/tqKezAY
