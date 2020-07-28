@@ -2,7 +2,6 @@
 All homeworks should be uploaded to the following link. Please follow naming structure defined in each task
 https://e.pcloud.com/#page=puplink&code=d1ZzC5vUJQuNIXzdeEIN57WcjdYEu0y
 
-
 ## Day 1
 
 ### Loops and fors
