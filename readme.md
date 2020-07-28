@@ -31,19 +31,20 @@ https://discord.gg/tqKezAY
 ## Resources
 
 ### Links to dataset
-https://osf.io/th8ew/
-https://docs.google.com/spreadsheets/d/1ejOJTNTL5ApCuGTUciV0REEEAqvhI2Rd2FCoj7afops/edit#gid=0
-https://datasetsearch.research.google.com/
-https://www.kaggle.com/
+
+- https://osf.io/th8ew/
+- https://docs.google.com/spreadsheets/d/1ejOJTNTL5ApCuGTUciV0REEEAqvhI2Rd2FCoj7afops/edit#gid=0
+- https://datasetsearch.research.google.com/
+- https://www.kaggle.com/
 
 ### Visualisation resources
-https://serialmentor.com/dataviz/introduction.html
-https://www.data-to-viz.com/caveats.html
-https://www.r-graph-gallery.com/
+
+- https://serialmentor.com/dataviz/introduction.html
+- https://www.data-to-viz.com/caveats.html
+- https://www.r-graph-gallery.com/
 
 ### Dplyr cheatsheets
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
-
 
 ### Ggplot reference
 https://ggplot2.tidyverse.org/reference/index.html
