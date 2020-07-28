@@ -1,4 +1,3 @@
-
 # Introduction
 
 The course ‘Behavioral data analysis in R’ is aimed at helping students to understand the whole data life cycle, from loading the data, preprocessing, exploring to statistical analysis and meaningful reporting.
@@ -30,6 +29,12 @@ This track builds up on the knowledge from Introduction to R course and focuses 
 https://discord.gg/tqKezAY
 
 ## Resources
+
+### Links to dataset
+https://osf.io/th8ew/
+https://docs.google.com/spreadsheets/d/1ejOJTNTL5ApCuGTUciV0REEEAqvhI2Rd2FCoj7afops/edit#gid=0
+https://datasetsearch.research.google.com/
+https://www.kaggle.com/
 
 ### Visualisation resources
 https://serialmentor.com/dataviz/introduction.html

@@ -89,6 +89,63 @@ df_movies %>%
   select(genres, is_comedy, title) %>%
   head()
 
-## Add 5 new columns of 5 different genres 
+### gsub
+df_movies$imdb_id[1:5]
+gsub("tt", "", df_movies$imdb_id[1:5])
+df_movies$genres[1]
+res <- gsub("\\[\\{'id'\\: ", "", df_movies$genres[1])
+res <- gsub(", 'name'\\: ", "", res)
 
+## paste
+#"hello" + "world"
+paste("hello", "world")
+paste("hello", "world", sep="-")
+paste("hello", "world", "!", sep=" is this happening? ")
+paste("hello", "world", collapse="!")
+paste(c("hello", "world"), collapse="!")
+paste(c("hello", "world"), c("hello", "world"), sep="-", collapse="!")
+
+df_movies %>%
+  mutate(bud_rev = paste(budget, revenue, sep="-")) %>%
+  select(bud_rev) %>%
+  head()
+
+df_movies %>%
+  mutate(action_com = paste(is_comedy, is_action, sep="-")) %>%
+  select(action_com) %>%
+  head()
+
+## Separate
+library(tidyr)
+?separate
+df_movies %>%
+  separate(release_date, c("year", "month", "day"), sep="-") %>%
+  head()
+
+df_temp <- data.frame(question = c("E1", "E2", "E3", "C1", "C2", "C3"),
+                      answer = sample(1:10, 6, replace=TRUE))
+df_temp <- rbind(df_temp, df_temp)
+df_temp
+
+df_temp <- df_temp %>%
+  separate(question, c("type", "number"), sep=1)
+df_temp %>%
+  ggplot(aes(answer, fill=type)) + geom_bar(position="dodge")
+
+## Unite (oposite of separate)
+df_temp %>%
+  unite(type_number, "type", "number")
+
+## Aggregations
+aggregate(df_movies$budget, by=list(rep(1, 2500)), mean)
+aggregate(df_movies$budget, by=list(year=df_movies$year), mean)
+
+df_movies %>%
+  group_by(year) %>%
+  summarise(average_budget= mean(budget))
+
+df_movies %>%
+  group_by(month, is_family) %>%
+  summarise(average_revenue = mean(revenue), n_movies = n()) %>%
+  filter(month %in% c(7,8,12))
 

@@ -9,6 +9,7 @@ load_movies_metadata <- function(sample = NULL){
     mutate(adult = adult == "True",
            budget = as.numeric(budget)/10^6,
            revenue = revenue/10^6) %>%
+    separate(release_date, c("year", "month", "day"), sep="-", convert = TRUE) %>%
     mutate(is_comedy = grepl("Comedy", genres),
            is_action = grepl("Action", genres),
            is_horror = grepl("Horror", genres),

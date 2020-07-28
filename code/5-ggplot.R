@@ -164,5 +164,91 @@ df_movies %>%
   filter(budget > 0, budget < 500, revenue > 0, revenue < 400) %>%
   ggplot(aes(budget, revenue)) +
     geom_point()
+### preprocessing
+df_movies_cleaned <- df_movies %>%
+  filter(budget > 0, budget < 500, revenue > 0, revenue < 400)
+
+df_movies_cleaned %>%
+  ggplot(aes(budget, revenue, color = is_comedy)) +
+  geom_point(size=2.5)
+
+df_movies_cleaned %>%
+  ggplot(aes(budget, revenue, color = is_comedy, size=is_comedy,
+             shape = is_comedy)) +
+  geom_point()
+
+## Possible but not recommended- keep it to two features MAX
+df_movies_cleaned %>%
+  ggplot(aes(budget, revenue, 
+             color = is_comedy, 
+             size = is_family,
+             shape = is_action)) +
+  geom_point()
+
+df_movies_cleaned %>%
+  ggplot(aes(budget, revenue, 
+             color = is_comedy, 
+             shape = is_comedy)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm")
+
+df_movies_cleaned %>%
+  ggplot(aes(budget, revenue,
+             color = is_comedy, 
+             shape = is_family)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm")
+
+## Bar charts for categorical data
+ggplot(df_movies, aes(vote_average)) +
+  geom_histogram(bins = 10)
+
+ggplot(df_movies, aes(is_comedy, fill=is_comedy)) +
+  geom_bar()
+
+ggplot(df_movies, aes(status, fill=status)) +
+  geom_bar()
+table(df_movies$status)
+
+df_movies %>%
+  filter(status != "Released") %>%
+  ggplot(aes(status, fill=status)) +
+   geom_bar()
+
+
+df_movies %>%
+  filter(status != "Released") %>%
+  ggplot(aes(status, fill=is_action)) +
+  geom_bar(position = "dodge")
+
+df_movies %>%
+  ggplot(aes(original_language)) + geom_bar()
+
+# Summative and inferential visualisatons
+
+## Line graphs
+x <- 1995:2020
+y <- rnorm(length(x))
+df_temp <- data.frame(x=x, y=y)
+ggplot(df_temp, aes(x=x, y=y)) + geom_point(size = 2)
+ggplot(df_temp, aes(x=x, y=y)) + geom_point(aes(color = y>0), size = 2)
+ggplot(df_temp, aes(x=x, y=y)) + geom_line(size = 2)
+
+### NOT THIS - connecting elements not ment to be connected
+df_movies %>%
+  group_by(original_language) %>%
+  summarise(mean=mean(vote_average)) %>%
+  ggplot(aes(as.numeric(factor(original_language)), mean)) + geom_line()
+
+df_movies <- load_movies_metadata()
+df_movies %>%
+  filter(revenue > 0, budget > 0) %>%
+  group_by(year) %>%
+  summarise(average_revenue = mean(revenue),
+            sd_revenue = sd(revenue),
+            n_movies = n()) %>%
+  filter(n_movies > 10) %>%
+  ggplot(aes(year, average_revenue)) + geom_line() +
+  geom_smooth(method = "lm")
 
 
