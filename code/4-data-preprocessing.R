@@ -23,7 +23,6 @@ df_movies <- df_movies %>%
   select(-c(overview, homepage, belongs_to_collection, production_companies,
            production_countries, tagline, poster_path))
 
-
 format(object.size(df_movies), units = "auto")
 table(df_movies$status)
 table(df_movies$original_language)
