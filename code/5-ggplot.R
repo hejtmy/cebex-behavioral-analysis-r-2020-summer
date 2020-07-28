@@ -89,3 +89,80 @@ df_movies %>%
              color = is_family)) +
   geom_freqpoly(size=2)
 
+
+### 
+source('code/data-loading-functions.R')
+df_movies <- load_movies_metadata() %>%
+  filter(vote_count > 0) %>%
+  sample_n(2500)
+
+### MULTIPLE LAYERS
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(runtime)) +
+    geom_histogram(aes(y=..density..)) +
+    geom_density(size = 1, fill="#fff85d", alpha=1)
+
+### Specific coloring
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(runtime)) +
+  geom_histogram(aes(y=..density..), fill="#eaeaee", color="#1e3063") +
+  geom_density(size = 1, fill="#1470af", alpha=0.2)
+
+### Competing coloring - works kinda weird
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(runtime, color=is_comedy)) +
+  geom_histogram(aes(y=..density..), fill="#eaeaee", color="#1e3063") +
+  geom_density(size = 1, fill="#1470af", alpha=0.2)
+
+## Boxplots
+ggplot(df_movies, aes(runtime)) + geom_histogram()
+
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(y=runtime)) + geom_boxplot()
+
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(y=runtime, color=is_comedy)) + 
+    geom_boxplot(varwidth = TRUE)
+
+df_movies %>%
+  filter(runtime < 180) %>%
+  ggplot(aes(x=is_comedy, y=runtime)) + 
+    geom_boxplot() +
+    geom_point(color="red") +
+    geom_jitter(color="blue", width = 0.2, height = 0)
+
+df_movies %>%
+  filter(runtime < 180, runtime > 1) %>%
+  ggplot(aes(x=is_comedy, y=runtime)) + 
+    geom_boxplot() +
+    geom_jitter(color="blue", width = 0.2, height = 0)
+
+### Hiding outliers
+df_movies %>%
+  filter(runtime < 180, runtime > 1) %>%
+  ggplot(aes(x=is_comedy, y=runtime)) + 
+  geom_boxplot(outlier.alpha = 0) 
+
+### Hiding outliers
+df_movies %>%
+  filter(runtime < 180, runtime > 1) %>%
+  ggplot(aes(x=is_comedy, y=runtime, color=is_family)) + 
+    geom_boxplot(outlier.alpha = 0, varwidth = TRUE)
+
+## Scatter plots
+df_movies %>%
+  filter(budget > 0) %>%
+  ggplot(aes(budget, vote_average)) +
+    geom_point()
+
+df_movies %>%
+  filter(budget > 0, budget < 500, revenue > 0, revenue < 400) %>%
+  ggplot(aes(budget, revenue)) +
+    geom_point()
+
+

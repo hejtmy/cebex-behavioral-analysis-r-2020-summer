@@ -31,5 +31,14 @@ https://discord.gg/tqKezAY
 
 ## Resources
 
+### Visualisation resources
+https://serialmentor.com/dataviz/introduction.html
+https://www.data-to-viz.com/caveats.html
+https://www.r-graph-gallery.com/
+
 ### Dplyr cheatsheets
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+
+### Ggplot reference
+https://ggplot2.tidyverse.org/reference/index.html
