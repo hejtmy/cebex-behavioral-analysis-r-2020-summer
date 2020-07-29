@@ -31,7 +31,7 @@ my_normalize_function(1:5)
 -1.2649111 -0.6324555  0.0000000  0.6324555  1.2649111
 my_normalize_function(c(-1,0,1))
 -1 0 1
-my_normalize_function(c(-1,0,1), mu = 1)
+my_normalize_function(c(-1,0,1), mu = -1)
  -2 -1  0
 my_normalize_function(c(-1,0,1), sd = 10)
  -0.1  0.0  0.1

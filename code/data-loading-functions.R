@@ -1,3 +1,5 @@
+library(dplyr)
+library(tidyr)
 load_movies_metadata <- function(sample = NULL){
   pth_movies <- "data/movies/movies_metadata.csv"
   df_movies <- read.csv(pth_movies)
