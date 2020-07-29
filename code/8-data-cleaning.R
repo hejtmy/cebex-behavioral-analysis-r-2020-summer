@@ -113,5 +113,6 @@ hist(log(df_movies$revenue))
 df_movies %>%
   filter(revenue > 0) %>%
   mutate(log_revenue = log(revenue)) %>%
-  ggplot(aes(revenue)) + geom_histogram() +
+  ggplot(aes(revenue)) +
+    geom_histogram() +
     scale_x_continuous(trans = "log")
