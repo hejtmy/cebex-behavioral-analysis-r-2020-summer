@@ -111,4 +111,27 @@ df_ratings %>%
   select(title, vote_average, mean) %>%
   head()
 
+### Merging dataframes without ID
 head(df_mat)
+head(df_por)
+colnames(df_mat)
+colnames(df_por)
+colnames(df_mat) == colnames(df_por)
+match_columns <- c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob",
+                   "reason","nursery","internet", "higher","famsup","freetime","goout", "romantic",
+                   "activities", "health","famrel", "guardian", "traveltime", "schoolsup", "Dalc", "Walc")
+df_students  <- merge(df_mat, df_por, by = match_columns)
+head(df_students)
+df_students  <- merge(df_mat, df_por, by = match_columns, suffixes = c("_mat", "_por"))
+nrow(df_students)
+nrow(df_mat)
+
+df_students  <- merge(df_mat, df_por, by = match_columns, 
+                      suffixes = c("_mat", "_por"), all = TRUE)
+str(df_students)
+nrow(df_students)
+nrow(df_mat) + nrow(df_por)
+
+df_mat$subject <- "math"
+df_por$subject <- "portugese"
+df_math_por_wrong <- rbind(df_mat, df_por)
