@@ -45,7 +45,7 @@ plt_year_revenue <- df_movies_complete %>%
             sd_revenue = sd(revenue),
             n_movies = n()) %>%
   filter(n_movies > 10) %>%
-  ggplot(aes(year, average_revenue)) + 
+  ggplot(aes(year, average_revenue)) +
     geom_line() +
     geom_smooth(method = "lm")
 
@@ -59,3 +59,70 @@ plt_year_revenue +
   ylab("Average movie revenue") +
   xlab("Movie Release year") +
   ggtitle("Average movie revenue per year", subtitle = "With fitted linear regression")
+
+
+plt_year_revenue <- df_movies_complete %>%
+  filter(revenue > 0, budget > 0) %>%
+  group_by(year) %>%
+  summarise(average_revenue = mean(revenue),
+            sd_revenue = sd(revenue),
+            n_movies = n()) %>%
+  ggplot(aes(year, average_revenue)) +
+    geom_line() +
+    geom_smooth(method = "lm") +
+    geom_point(aes(color = n_movies > 10, size = as.numeric(n_movies > 10)))
+
+plt_year_revenue +
+  labs(y = "Average movie revenue", 
+       color = "More than 10 movies came out",
+       size = "More than 10 movies came out")
+
+## Chaning guides
+plt_year_revenue +
+  guides(size = FALSE)
+
+plt_year_revenue +
+  scale_color_discrete(name = "More than 10 movies") +
+  scale_size(name = "More than 10 movies", 
+             breaks = c(0,1), labels = c("True", "False"))
+
+## Adding errorbars
+df_movies_complete %>%
+  filter(revenue > 0, budget > 0) %>%
+  group_by(year) %>%
+  summarise(average_revenue = mean(revenue),
+            sd_revenue = sd(revenue),
+            n_movies = n()) %>%
+  filter(n_movies > 10) %>%
+  ggplot(aes(year)) +
+    geom_line(aes(y=average_revenue)) +
+    geom_errorbar(aes(ymin=average_revenue-sd_revenue,
+                      ymax=average_revenue+sd_revenue))
+
+plt_year_revenue <- df_movies_complete %>%
+  filter(revenue > 0, budget > 0) %>%
+  group_by(year) %>%
+  summarise(average_revenue = mean(revenue),
+            sd_revenue = sd(revenue),
+            n_movies = n(),
+            se_revenue = sd_revenue/sqrt(n_movies),
+            ci_revenue = ........) %>%
+  filter(n_movies > 10) %>%
+  ggplot(aes(year)) +
+  geom_line(aes(y=average_revenue)) +
+  geom_errorbar(aes(ymin=average_revenue-se_revenue,
+                    ymax=average_revenue+se_revenue))
+
+plt_year_revenue + 
+  labs(x="Release Year",
+       y="Average movie revenue",
+       title="Average movie revenues per year",
+       subtitle ="Errorbars represent standard error of the mean")
+
+## Theming
+
+## Faceting
+
+## Multiple plots
+
+
