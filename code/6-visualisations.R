@@ -82,7 +82,7 @@ plt_year_revenue +
   guides(size = FALSE)
 
 plt_year_revenue +
-  scale_color_discrete(name = "More than 10 movies") +
+  scale_color_manual(name = "More than 10 movies", values=c("red", "blue")) +
   scale_size(name = "More than 10 movies", 
              breaks = c(0,1), labels = c("True", "False"))
 
@@ -106,23 +106,56 @@ plt_year_revenue <- df_movies_complete %>%
             sd_revenue = sd(revenue),
             n_movies = n(),
             se_revenue = sd_revenue/sqrt(n_movies),
-            ci_revenue = ........) %>%
+            ci_revenue = qnorm(.975)*se_revenue) %>%
   filter(n_movies > 10) %>%
   ggplot(aes(year)) +
-  geom_line(aes(y=average_revenue)) +
-  geom_errorbar(aes(ymin=average_revenue-se_revenue,
-                    ymax=average_revenue+se_revenue))
+    geom_line(aes(y=average_revenue))
 
-plt_year_revenue + 
+plt_year_revenue +
+  geom_errorbar(aes(ymin=average_revenue-ci_revenue,
+                    ymax=average_revenue+ci_revenue),
+                color="green") +
+  geom_errorbar(aes(ymin=average_revenue-se_revenue,
+                    ymax=average_revenue+se_revenue))+
   labs(x="Release Year",
        y="Average movie revenue",
        title="Average movie revenues per year",
        subtitle ="Errorbars represent standard error of the mean")
 
+plt_year_revenue <- plt_year_revenue +
+  geom_errorbar(aes(ymin=average_revenue-ci_revenue,
+                    ymax=average_revenue+ci_revenue)) + 
+  labs(x="Release Year",
+       y="Average movie revenue",
+       title="Average movie revenues per year",
+       subtitle ="Errorbars represent 95 percent confidence intervals")
+plt_year_revenue
+
 ## Theming
+plt_year_revenue +
+  theme_minimal() +
+  theme(plot.title = element_text(size=22))
+
+theme_mine <- theme_minimal() + theme(plot.title = element_text(size=22))
+plt_year_revenue + theme_mine
+
+theme_set(theme_minimal())
+theme_set(theme_gray())
+theme_set(theme_mine)
 
 ## Faceting
+df_movies_complete %>%
+  filter(revenue > 0, budget > 0) %>%
+  group_by(year, is_comedy) %>%
+  summarise(average_revenue = mean(revenue),
+            sd_revenue = sd(revenue),
+            n_movies = n(),
+            se_revenue = sd_revenue/sqrt(n_movies),
+            ci_revenue = qnorm(.975)*se_revenue) %>%
+  filter(n_movies > 10) %>%
+  ggplot(aes(year, group=as.factor(is_comedy))) +
+  geom_line(aes(y=average_revenue)) +
+  facet_wrap(~is_comedy)
 
 ## Multiple plots
-
 
