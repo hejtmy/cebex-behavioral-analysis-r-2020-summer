@@ -84,7 +84,7 @@ This seems like a small/short task, but requires you to work a bit with dates an
 
 ### ggplot
 
-save the code into a file named [yourname]-ggplot-exploration.R. Put all the answers into commens after the code which generated the graph.
+save the code into a file named [yourname]-ggplot-exploration.R. Put all the answers into comments after the code which generated the graph.
 
 Use the big5 dataset from the previous task. You will need all those extra columns (openness, extraversion, neuroticism, age group etc.)
 1. Plot a histogram of openess and color it nicely :)
@@ -108,4 +108,18 @@ Load the ratings_small dataset from the previous task. It contains individual ra
 
 ## Day 3
 
+Nothing
+
 ## Day 4
+save the code into a file named [yourname]-statistical-inference.R. Put all the answers into comments after the code
+
+1. Load the modified big5 questionnaire from day 2 (or run a code which modifies it again). It needs to have those 5 calculated scores for Extraversion, Openess etc..
+2. Look at the histogram for one of the 5 Scores and comment on the results.
+3. Plot histograms of all 5 scores next to each other (you might need to convert data to long format to use facet wrap, or use gridExtra package or patchwork).
+4. Is there something about the data you find important to "fix"? If so, try to fix it :)
+5. Choose one of the 5 scores and investigate the normality and homogenity of variances assumptions for both genders. Comment on/interpret the results.
+6. Run a test comparing the scores between males and females. Is the chosen personality trait significantly different between genders? Comment on/interpret the results.
+7. Check correlations between all 5 scores. (you can do that using a single command). Comment on/interpret the results.
+8. Check if the chosen score is dependent on age using linear regression. Comment on your results
+9. Run anova to check if your chosen score significantly differs between different races. Comment on/interpret the results.
+10. If anova turns out significant, run post hoc test. Comment on/interpret the results.
