@@ -157,5 +157,20 @@ df_movies_complete %>%
   geom_line(aes(y=average_revenue)) +
   facet_wrap(~is_comedy)
 
+df_movies %>%
+  filter(revenue > 0, budget > 0) %>%
+  ggplot(aes(budget, revenue, color=is_family)) + geom_point() +
+  scale_x_log10() + scale_y_log10() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~is_family)
+
+df_movies %>%
+  filter(revenue > 0, budget > 0) %>%
+  filter(year > 2010) %>%
+  ggplot(aes(budget, revenue, color=is_family)) + geom_point() +
+  scale_x_log10() + scale_y_log10() +
+  geom_smooth(method = "lm") +
+  facet_wrap(~year, scales = "fixed")
+
 ## Multiple plots
 

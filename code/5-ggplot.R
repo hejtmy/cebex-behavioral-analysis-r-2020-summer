@@ -252,3 +252,5 @@ df_movies %>%
   geom_smooth(method = "lm")
 
 
+
+
