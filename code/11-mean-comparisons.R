@@ -89,12 +89,36 @@ df_ratings <- read.csv("data/movies/ratings_small.csv")
 head(df_ratings)
 length(unique(df_ratings$userId))
 
+## Binding family information
 df_ratings_family <- df_ratings %>%
   mutate(movieId = as.character(movieId)) %>%
   inner_join(select(df_movies_complete, id, is_family), by=c("movieId" = "id"))
 
-df_ratings_family %>%
+df_comparing_family <- df_ratings_family %>%
   group_by(userId, is_family) %>%
-  summarise(avg = mean(rating)) %>%
-  head()
+  summarise(avg = mean(rating),
+            n_movies = n()) %>%
+  ungroup() %>%
+  filter(n_movies > 5) %>%
+  select(-n_movies) %>%
+  pivot_wider(names_from = "is_family", values_from="avg", names_prefix = "family") %>%
+  select(userId, family=familyTRUE, not_family=familyFALSE) %>%
+  drop_na()
 
+str(df_comparing_family)
+df_comparing_family %>%
+  pivot_longer(cols = c("not_family", "family")) %>%
+  ggplot(aes(as.numeric(factor(name)), value, color=factor(userId))) + 
+  geom_line() + guides(color=FALSE) + geom_point()
+
+t.test(df_comparing_family$family, df_comparing_family$not_family, paired = TRUE)
+
+## Non parametric data
+hist(df_movies$revenue)
+t.test(revenue~is_family, data=filter(df_movies_complete, revenue > 0)) #wrong, revenue is not normally distributed
+df_movies_complete %>%
+  filter(revenue > 0) %>%
+  with(cohen.d(revenue ~ factor(is_family)))
+
+wilcox.test(revenue~is_family, data=filter(df_movies_complete, revenue > 0))
+wilcox.test(revenue~is_drama, data=filter(df_movies_complete, revenue > 0))
