@@ -43,6 +43,11 @@ https://discord.gg/tqKezAY
 - https://www.data-to-viz.com/caveats.html
 - https://www.r-graph-gallery.com/
 
+Multiple plots
+- https://cran.r-project.org/web/packages/gridExtra/vignettes/arrangeGrob.html
+- https://www.r-graph-gallery.com/261-multiple-graphs-on-same-page.html
+- https://gotellilab.github.io/GotelliLabMeetingHacks/NickGotelli/ggplotPatchwork.html
+
 ### Dplyr cheatsheets
 https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
@@ -52,3 +57,4 @@ https://ggplot2.tidyverse.org/reference/index.html
 
 ### Correlations
 https://github.com/easystats/correlation
+
