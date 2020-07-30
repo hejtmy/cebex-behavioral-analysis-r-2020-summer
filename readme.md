@@ -48,3 +48,7 @@ https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
 ### Ggplot reference
 https://ggplot2.tidyverse.org/reference/index.html
+
+
+### Correlations
+https://github.com/easystats/correlation
