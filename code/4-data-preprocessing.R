@@ -149,3 +149,27 @@ df_movies %>%
   summarise(average_revenue = mean(revenue), n_movies = n()) %>%
   filter(month %in% c(7,8,12))
 
+
+## Data reshaping
+df_example <- data.frame(cond1 = rnorm(100,100,5), cond2 = rnorm(100,110,5),
+                         cond3 = rnorm(100,112,5), cond4 = rnorm(100,150,5))
+head(df_example)
+
+library(tidyr)
+## pivot_longer (gather)
+df_example %>%
+  select(cond1) %>%
+  pivot_longer(cols = c("cond1"), names_to="condition")
+
+df_example %>%
+  pivot_longer(cols = c("cond1", "cond2", "cond3", "cond4"), 
+               names_to="condition")
+
+df_example %>%
+  pivot_longer(cols = c("cond1", "cond2", "cond3", "cond4"), 
+               names_to="condition") %>%
+  ggplot(aes(value, fill=condition)) + geom_boxplot()
+
+head(df_example)
+
+## pivot_wider (spread)
