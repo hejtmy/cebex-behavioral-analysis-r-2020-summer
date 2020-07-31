@@ -95,6 +95,7 @@ This might require you to sumamrise and transform your data (e.g. calculate grou
 Remember to plot data which was preprocessed in the same way as the data used for analyses - graphs should represent the data which was used to achive those results.
 
 **Graphs should be self explanatory!** Remember to:
+
 a) Choose appropriate graph for the type of data you want to convey.
 b) Label all axes properly
 c) Name all guides and legends properly. the graphs should not have information such as "en", "mfe".
