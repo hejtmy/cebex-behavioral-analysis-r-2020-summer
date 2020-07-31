@@ -39,6 +39,7 @@ https://discord.gg/tqKezAY
 
 ### Visualisation resources
 
+- https://www.r-graph-gallery.com/
 - https://serialmentor.com/dataviz/introduction.html
 - https://www.data-to-viz.com/caveats.html
 - https://www.r-graph-gallery.com/
@@ -49,11 +50,17 @@ Multiple plots
 - https://gotellilab.github.io/GotelliLabMeetingHacks/NickGotelli/ggplotPatchwork.html
 
 ### Dplyr cheatsheets
-https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+- https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
 ### Ggplot reference
-https://ggplot2.tidyverse.org/reference/index.html
+- https://ggplot2.tidyverse.org/reference/index.html
 
 
 ### Correlations
-https://github.com/easystats/correlation
+- https://github.com/easystats/correlation
+
+### Introduciton to statistics
+- https://www.khanacademy.org/math/statistics-probability
+
+### Mixed models
+- https://web.stanford.edu/class/psych252/section/Mixed_models_tutorial.html
