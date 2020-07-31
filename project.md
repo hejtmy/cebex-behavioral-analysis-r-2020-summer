@@ -58,15 +58,17 @@ Using meaningful visualisations, explore the data of interest. Comment on all fi
 3. Use **geom bars** to investigate "counts" in categorical variables.
 4. Use **boxplots** to explore for differences in different groups.
 
+You shoudl produce at least 7 meaningful exploratory graphs with comments.
+
 ## Formulate hypotheses
 
-Using the outcomes of data exploration, formulate and state some hypotheses about your data. You should formualte and have **at least 5 hypotheses**.
+Using the outcomes of data exploration, formulate and state some hypotheses about your data. You should formualte and have **at least 5 hypotheses** and **at most 7**.
 
 Modify the data so that you can test for those hypotheses - creating new variables which you might have forgotten about or which arose during your thinking process
 
 ## Inferential statistics
 
-Test for the hypotheses defined in the previous step using appropriate statistical test. 
+Test for all the hypotheses defined in the previous step using appropriate statistical test. 
 
 Remember to:
 - check for normality and homogenity of variances, if necessary. 
@@ -88,7 +90,7 @@ Make some final conclusions about the dataset and obtained results.
 ```
 ## Visualise results
 
-Create graphs which meaningfully convey the results. These graphs are different from exploratory graphs, as are they usually summative, filtered for erroneous values and goal oriented. These graphs should be clean, self explanatory and well documented.
+Create graphs which meaningfully convey each of the results (therefore 5 - 7 graphs). These graphs are different from exploratory graphs, as are they usually summative, filtered for erroneous values and goal oriented. These graphs should be clean, self explanatory and well documented.
 
 This might require you to sumamrise and transform your data (e.g. calculate group means, group errors etc.) to do that.
 
@@ -96,8 +98,8 @@ Remember to plot data which was preprocessed in the same way as the data used fo
 
 **Graphs should be self explanatory!** Remember to:
 
-a) Choose appropriate graph for the type of data you want to convey.
-b) Label all axes properly
-c) Name all guides and legends properly. the graphs should not have information such as "en", "mfe".
-d) Add information about any unclear elements (what are error bars representing? confidence intervals, sds, ses etc.)
-e) For bonus points, make those graphs nice :) Select your own colors etc.
+- Choose appropriate graph for the type of data you want to convey.
+- Label all axes properly
+- Name all guides and legends properly. the graphs should not have information such as "en", "mfe".
+- Add information about any unclear elements (what are error bars representing? confidence intervals, sds, ses etc.)
+- For bonus points, make those graphs nice :) Select your own colors etc.
