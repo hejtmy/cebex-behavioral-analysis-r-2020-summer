@@ -17,10 +17,10 @@ hist(df_movies$vote_average, breaks=25)
 
 ## General rules about the project
 
-1. *All the code shoudl be your own*: You can naturally search for help, even ask for help online, but you shouldn't be just coping bits and pieces of code from some other assignment. It is fine to copy and modify a code which makes a histogram, it is not fine to copy 50 lines of code which you found online and only changed your variable names. This often becomes aparent, as people usually don't even modify the variables of interest, don't recode values, don't filter outliers properly etc. Please, if you need to copy, copy relevant individual pieces (how to do linear regression, how to investigate qqplots), not entire blocks.
-2. *The submited code should be reproducible*: When you submit your code, I should be able to run it on my PC. It should load all necessary packages and if the data is not loaded from the web, you need to send me the data as well and provide proper relative paths (the paths should be "data/movies.csv", not "F:/users/Amanda/Downloads/movies.csv"). Basically zip the entire folder with code and data in. If I cannot run the code, I will not accept it. Make sure the code runs by testing it on a different PC, or asking a friend to run it first.
-3. *Extra Information*: If there is something else I have to know to run the code (install packages from github, run it on specific R version, let me know)
-4. *Code style*: All the code should be abiding by the R code style https://style.tidyverse.org/
+1. **All the code shoudl be your own**: You can naturally search for help, even ask for help online, but you shouldn't be just coping bits and pieces of code from some other assignment. It is fine to copy and modify a code which makes a histogram, it is not fine to copy 50 lines of code which you found online and only changed your variable names. This often becomes aparent, as people usually don't even modify the variables of interest, don't recode values, don't filter outliers properly etc. Please, if you need to copy, copy relevant individual pieces (how to do linear regression, how to investigate qqplots), not entire blocks.
+2. **The submited code should be reproducible**: When you submit your code, I should be able to run it on my PC. It should load all necessary packages and if the data is not loaded from the web, you need to send me the data as well and provide proper relative paths (the paths should be "data/movies.csv", not "F:/users/Amanda/Downloads/movies.csv"). Basically zip the entire folder with code and data in. If I cannot run the code, I will not accept it. Make sure the code runs by testing it on a different PC, or asking a friend to run it first.
+3. **Code style**: All the code should be abiding by the R code style https://style.tidyverse.org/
+4. **Extra Information**: If there is something else I have to know to run the code (install packages from github, run it on specific R version, let me know)
 
 ## Get the data
 The first step is actually obtaining some interesting ane meaningful dataset. There are many sources which you can search, here is just a few to name:
@@ -39,28 +39,28 @@ Here are some rules about the data:
 
 ## Preprocess the data
 
-1. *Change types*: Recode all the variables so that they have proper types - 1, 0 or "yes", "no" to logical; numbers shoudl be numbers, not characters.
-2. *Recode*: Recode the data to meaningul values - "male" "female" shoudl not be 1 and 0; "en" should be "English", etc.
-3. *Tidy data*: Recode the data into tidy format - each value has their own cell. For example: "1999-10-01" should be converted to three values year, month, day; 3-1 to goals_scored, goals_received etc.
-4. *Duplicates*: Check that the data doesn't contain any duplicates
-5. *Missing values*: Mark missing values properly. E.g. movies making 0 money, football matches which scores 999 goals etc.
-6. *Mutate*: Mutate values to be more meaningful - e.g. budgets in milions of dollars ranther than in dollars. 
-7. *Create*: Create new variables - e.g.profit = revenue-budget, is_comedy, 
-8. *Normalize/scale*: Normalize some data if they need to be normalized. Create new variables rather than override the old.
-9. *Rename*: Rename columns/variables to be meaningful. e.g. budget instead of bg, goals_per_year rather than gpy etc.
+1. **Change types**: Recode all the variables so that they have proper types - 1, 0 or "yes", "no" to logical; numbers shoudl be numbers, not characters.
+2. **Recode**: Recode the data to meaningul values - "male" "female" shoudl not be 1 and 0; "en" should be "English", etc.
+3. **Tidy data**: Recode the data into tidy format - each value has their own cell. For example: "1999-10-01" should be converted to three values year, month, day; 3-1 to goals_scored, goals_received etc.
+4. **Duplicates**: Check that the data doesn't contain any duplicates
+5. **Missing values**: Mark missing values properly. E.g. movies making 0 money, football matches which scores 999 goals etc.
+6. **Mutate**: Mutate values to be more meaningful - e.g. budgets in milions of dollars ranther than in dollars. 
+7. **Create**: Create new variables - e.g.profit = revenue-budget, is_comedy, 
+8. **Normalize/scale**: Normalize some data if they need to be normalized. Create new variables rather than override the old.
+9. **Rename***: Rename columns/variables to be meaningful. e.g. budget instead of bg, goals_per_year rather than gpy etc.
 
 ## Explore the data
 
 Using meaningful visualisations, explore the data of interest. Comment on all findings and what you plan to do about it - e.g. `#looking at the histogram we observe something weird about few outliers in the top right cornes. I might remove the data so it won't affect the regression`
 
-1. Use *histograms* to check for normality and outliers.
-2. Use *pairs/geom_points()* to investigate relationships between 
-3. Use *geom bars* to investigate "counts"
-4. Use *boxplots* to explore for differences in different groups
+1. Use **histograms** to check for normality and outliers.
+2. Use **pairs/geom_points()** to investigate relationships between variables of interest.
+3. Use **geom bars** to investigate "counts" in categorical variables.
+4. Use **boxplots** to explore for differences in different groups.
 
 ## Formulate hypotheses
 
-Using the outcomes of data exploration, formulate and state some hypotheses about your data. You should formualte and have *at least 5 hypotheses*.
+Using the outcomes of data exploration, formulate and state some hypotheses about your data. You should formualte and have **at least 5 hypotheses**.
 
 Modify the data so that you can test for those hypotheses - creating new variables which you might have forgotten about or which arose during your thinking process
 
@@ -75,9 +75,17 @@ Remember to:
 I expect you to use at each of the following tests at least once:
 
 1. t-test/wilcox.test
-2. anova
+2. anova - post hoc tests if necessary
 3. linear regression
 
+Interpret the results properly - state if they are significant or not and what does that mean.
+
+Make some final conclusions about the dataset and obtained results.
+
+```
+#' investigating the revenues of movies relesed after year 2000, we cannot say that the family movies made aby more money than the non family movies.
+#' Using a linear regression, I observed that movies on average made 2.2 milions per milion dollars spent
+```
 ## Visualise results
 
 Create graphs which meaningfully convey the results. These graphs are different from exploratory graphs, as are they usually summative, filtered for erroneous values and goal oriented. These graphs should be clean, self explanatory and well documented.
@@ -86,7 +94,7 @@ This might require you to sumamrise and transform your data (e.g. calculate grou
 
 Remember to plot data which was preprocessed in the same way as the data used for analyses - graphs should represent the data which was used to achive those results.
 
-*Graphs should be self explanatory!* Remember to:
+**Graphs should be self explanatory!** Remember to:
 a) Choose appropriate graph for the type of data you want to convey.
 b) Label all axes properly
 c) Name all guides and legends properly. the graphs should not have information such as "en", "mfe".
